@@ -42,7 +42,33 @@ app.get('/todos',(req,res)=>{
 })
 
 //user edit
-app.put("/todos/:id",(req,res)=>{})
+app.put("/todos/:id",(req,res)=>{
+    const {id} = req.params;
+    const {title} = req.body;
+
+    const index = TodoArr.findIndex((item)=>item.id === +id)
+    if(index === -1){
+        res.status(404).json({
+            massage : "todo not found"
+        })
+        return
+    }
+    if(!title){
+        res.status(404).json({
+            massage:"title is required"
+        })
+        return
+    }
+    
+    TodoArr[index].title = title
+
+    res.status(200).json({
+        massage:'todo find',
+        data : TodoArr[index]
+    })
+})
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

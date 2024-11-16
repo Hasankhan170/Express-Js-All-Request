@@ -83,12 +83,6 @@ app.delete("/todos/:id",(req,res)=>{
         })
         return
     }
-    if(!title){
-        res.status(404).json({
-            massage : "title is required"
-        })
-        return
-    }
 
     TodoArr.splice(index,1)
     res.status(200).json({

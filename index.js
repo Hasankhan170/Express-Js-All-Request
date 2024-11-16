@@ -3,11 +3,14 @@ import cors from "cors";
 const app = express()
 const port = 3000
 
+//empty arr
 const TodoArr = []
 
+//middleware
 app.use(express.json())
 app.use(cors())
 
+//route
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
